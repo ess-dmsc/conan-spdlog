@@ -14,7 +14,7 @@ container_build_nodes = [
   'ubuntu': ContainerBuildNode.getDefaultContainerBuildNode('ubuntu1804')
 ]
 
-package_builder = new ConanPackageBuilder(this, container_build_bodes, conan_pkg_channel)
+package_builder = new ConanPackageBuilder(this, container_build_nodes, conan_pkg_channel)
 package_builder.defineRemoteUploadNode('centos')
 
 builders = package_builder.createPackageBuilders { container ->
