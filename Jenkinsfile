@@ -2,7 +2,7 @@
 import ecdcpipeline.ContainerBuildNode
 import ecdcpipeline.ConanPackageBuilder
 
-project = "conan-spdlog"
+project = "conan-spdlog-graylog"
 
 conan_remote = "ess-dmsc-local"
 conan_user = "ess-dmsc"
@@ -20,7 +20,7 @@ package_builder.defineRemoteUploadNode('centos')
 builders = package_builder.createPackageBuilders { container ->
   package_builder.addConfiguration(container, [
     'settings': [
-      'spdlog:build_type': 'Release'
+      'spdlog-graylog:build_type': 'Release'
     ]
   ])
 }
@@ -29,6 +29,7 @@ node {
   checkout scm
 
   builders['macOS'] = get_macos_pipeline()
+  builders['windows10'] = get_win10_pipeline()
 
   try {
     parallel builders
@@ -67,7 +68,7 @@ def get_macos_pipeline() {
 
         stage("macOS: Package") {
           sh "conan create . ${conan_user}/${conan_pkg_channel} \
-            --settings spdlog:build_type=Release \
+            --settings spdlog-graylog:build_type=Release \
             --build=outdated"
         }  // stage
 
@@ -78,6 +79,57 @@ def get_macos_pipeline() {
             ${conan_pkg_channel}"
         }  // stage
       }  // dir
+    }  // node
+  }  // return
+} // def
+
+def get_win10_pipeline() {
+  return {
+    node('windows10') {
+      // Use custom location to avoid Win32 path length issues
+      ws('c:\\jenkins\\') {
+      cleanWs()
+      dir("${project}") {
+        stage("win10: Checkout") {
+          checkout scm
+        }  // stage
+
+        stage("win10: Conan setup") {
+          withCredentials([
+            string(
+              credentialsId: 'local-conan-server-password',
+              variable: 'CONAN_PASSWORD'
+            )
+          ]) {
+            bat """C:\\Users\\dmgroup\\AppData\\Local\\Programs\\Python\\Python36\\Scripts\\conan.exe user \
+              --password ${CONAN_PASSWORD} \
+              --remote ${conan_remote} \
+              ${conan_user}"""
+          }  // withCredentials
+        }  // stage
+
+        stage("win10: Package") {
+          //bat """C:\\Users\\dmgroup\\AppData\\Local\\Programs\\Python\\Python36\\Scripts\\conan.exe \
+          //  create . ${conan_user}/${conan_pkg_channel} \
+          //  --settings spdlog-graylog-graylog:build_type=Release \
+          //  --options spdlog-graylog-graylog:shared=False \
+          //  --build=outdated"""
+
+          bat """C:\\Users\\dmgroup\\AppData\\Local\\Programs\\Python\\Python36\\Scripts\\conan.exe \
+            create . ${conan_user}/${conan_pkg_channel} \
+            --settings spdlog-graylog-graylog:build_type=Release \
+            --options spdlog-graylog-graylog:shared=True \
+            --build=outdated"""
+        }  // stage
+
+        stage("win10: Upload") {
+          //sh "upload_conan_package.sh conanfile.py \
+          //  ${conan_remote} \
+           // ${conan_user} \
+           // ${conan_pkg_channel}"
+        }  // stage
+      }  // dir
+      }
     }  // node
   }  // return
 } // def
