@@ -2,7 +2,7 @@ project(PackageTest LANGUAGES CXX)
 cmake_minimum_required(VERSION 3.10.0)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(KEEP_RPATHS)
+conan_basic_setup()
 
 add_executable(example example.cpp)
 target_link_libraries(example ${CONAN_LIBS})
