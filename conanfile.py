@@ -5,7 +5,7 @@ from conans import ConanFile, CMake, tools
 class spdlogConan(ConanFile):
     name = "spdlog"
     src_version = "1.2.1"
-    version = "1.2.1"
+    version = "1.2.1-dm1"
     homepage = "https://github.com/ess-dmsc/spdlog"
     license = "BSD 2-Clause"
     url = "https://github.com/ess-dmsc/conan-spdlog"
