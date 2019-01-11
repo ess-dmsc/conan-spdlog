@@ -3,8 +3,7 @@ import os
 
 
 class spdlogTestConan(ConanFile):
-    requires = ("cmake_installer/3.10.0@conan/stable","fmt/5.2.1@bincrafters/stable", "graylog-logger/1.1.1-dm1@ess"
-                                                                                      "-dmsc/stable")
+    requires = ("cmake_installer/3.10.0@conan/stable", "spdlog-graylog/1.2.1-dm1@ess-dmsc/testing")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
