@@ -29,7 +29,6 @@ node {
   checkout scm
 
   builders['macOS'] = get_macos_pipeline()
-  builders['windows10'] = get_win10_pipeline()
 
   try {
     parallel builders
