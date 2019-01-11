@@ -17,7 +17,7 @@ class spdlogConan(ConanFile):
     generators = "cmake"
     _source_subfolder = "source_subfolder"
     exports_sources = ["CMakeLists.txt"]
-    requires = ("fmt/5.2.1@bincrafters/stable", "graylog-logger/1.1.1-dm1@ess-dmsc/stable")
+    requires = ("fmt/5.2.0@bincrafters/stable", "graylog-logger/1.1.1-dm1@ess-dmsc/stable")
     default_user = "ess-dmsc"
     default_channel = "testing"
 
