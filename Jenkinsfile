@@ -20,7 +20,8 @@ package_builder.defineRemoteUploadNode('centos')
 builders = package_builder.createPackageBuilders { container ->
   package_builder.addConfiguration(container, [
     'settings': [
-      'spdlog-graylog:build_type': 'Release'
+      'spdlog-graylog:build_type': 'Release',
+      'compiler.libcxx': 'libstdc++11'
     ]
   ])
 }
