@@ -1,0 +1,14 @@
+[requires]
+spdlog-graylog/1.2.1-dm1@ess-dmsc/testing
+
+[generators]
+cmake
+virtualbuildenv
+
+[imports]
+bin, cmake -> ./bin
+bin, *.dll -> ./bin
+lib, *.dll -> ./bin
+lib, *.so.* -> ./lib
+lib, *.so -> ./lib
+share, * -> ./share
