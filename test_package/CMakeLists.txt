@@ -8,4 +8,5 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(KEEP_RPATHS)
 
 add_executable(example example.cpp)
+message(STATUS "Libraries: ${CONAN_LIBS}")
 target_link_libraries(example ${CONAN_LIBS})
