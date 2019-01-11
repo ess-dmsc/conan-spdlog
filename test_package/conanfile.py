@@ -3,7 +3,7 @@ import os
 
 
 class spdlogTestConan(ConanFile):
-    requires = ("cmake_installer/3.10.0@conan/stable", )
+    # requires = ("cmake_installer/3.10.0@conan/stable", "")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
