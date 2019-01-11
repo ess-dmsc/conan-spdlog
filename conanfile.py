@@ -4,6 +4,7 @@ from conans import ConanFile, CMake, tools
 
 class spdlogConan(ConanFile):
     name = "spdlog-graylog"
+    libname = "spdlog"
     src_version = "1.2.1"
     version = "1.2.1-dm1"
     homepage = "https://github.com/ess-dmsc/spdlog"
@@ -22,7 +23,7 @@ class spdlogConan(ConanFile):
 
     def source(self):
         tools.get("{0}/archive/v1.x.tar.gz".format(self.homepage))
-        extracted_dir = self.name + "-1.x"
+        extracted_dir = self.libname + "-1.x"
         os.rename(extracted_dir, self._source_subfolder)
 
     def _configure_cmake(self):
