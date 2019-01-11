@@ -7,9 +7,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(KEEP_RPATHS)
 
-find_package(spdlog REQUIRED)
-
-find_library(SPDLOG_LIB spdlog)
-
 add_executable(example example.cpp)
-target_link_libraries(example ${SPDLOG_LIB})
+target_link_libraries(example ${CONAN_LIBS})
