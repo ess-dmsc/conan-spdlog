@@ -29,7 +29,7 @@ class spdlogConan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["SPDLOG_BUILD_EXAMPLES"] = False
-        cmake.definitions["SPDLOG_BUILD_TESTING"] = False
+        cmake.definitions["SPDLOG_BUILD_TESTS"] = False
         cmake.definitions["SPDLOG_BUILD_BENCH"] = False
         cmake.definitions["SPDLOG_FMT_EXTERNAL"] = True
         cmake.configure(source_dir=self._source_subfolder, build_dir='.')
