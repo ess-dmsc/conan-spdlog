@@ -19,7 +19,7 @@ class spdlogConan(ConanFile):
     exports_sources = ["CMakeLists.txt"]
     requires = ("fmt/5.3.0@bincrafters/stable", "graylog-logger/1.1.5@ess-dmsc/stable")
     default_user = "ess-dmsc"
-    default_channel = "testing"
+    default_channel = "stable"
 
     def source(self):
         tools.get("{0}/archive/v1.x.tar.gz".format(self.homepage))
