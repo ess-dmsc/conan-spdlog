@@ -4,12 +4,11 @@
 #include <memory>
 #include <mutex>
 
-using my_sink_mt = spdlog::sinks::graylog_sink<std::mutex>;
-
 int main() {
-    std::string Host = "localhost";
-    auto Sink = std::make_shared<my_sink_mt>(Host, 12201);
-    auto GraylogLogger = std::make_shared<spdlog::logger>("graylog", Sink);
-    GraylogLogger->warn("test fmt {}", "as well");
+    auto logger = spdlog::sinks::graylog_sink_mt("graylog_logger", spdlog::level::trace, "0.0.0.0", 12201);
+    logger->trace("trace message");
+    logger->debug("debug message");
+    logger->info("info message");
+    logger->critical("critical message");
     return 0;
 }
