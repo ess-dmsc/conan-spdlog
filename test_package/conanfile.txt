@@ -1,5 +1,5 @@
 [requires]
-spdlog-graylog/1.2.1-dm1@ess-dmsc/testing
+spdlog-graylog/1.2.1-dm8@ess-dmsc/testing
 
 [generators]
 cmake
