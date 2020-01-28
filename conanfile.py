@@ -5,8 +5,8 @@ from conans import ConanFile, CMake, tools
 class spdlogConan(ConanFile):
     name = "spdlog-graylog"
     libname = "spdlog"
-    src_version = "1.2.1"
-    version = "1.2.1-dm12"
+    src_version = "1.5.0"
+    version = "1.5.0"
     homepage = "https://github.com/ess-dmsc/spdlog"
     license = "BSD 2-Clause"
     url = "https://github.com/ess-dmsc/conan-spdlog"
@@ -17,7 +17,7 @@ class spdlogConan(ConanFile):
     generators = "cmake"
     _source_subfolder = "source_subfolder"
     exports_sources = ["CMakeLists.txt"]
-    requires = ("fmt/5.3.0@bincrafters/stable", "graylog-logger/1.1.5-dm1@ess-dmsc/stable")
+    requires = ("fmt/6.1.2", "graylog-logger/2.0.1-dm1@ess-dmsc/stable")
     default_user = "ess-dmsc"
     default_channel = "stable"
 
@@ -31,7 +31,7 @@ class spdlogConan(ConanFile):
         cmake.definitions["SPDLOG_BUILD_EXAMPLES"] = False
         cmake.definitions["SPDLOG_BUILD_TESTS"] = False
         cmake.definitions["SPDLOG_BUILD_BENCH"] = False
-        cmake.definitions["SPDLOG_FMT_EXTERNAL"] = True
+        cmake.definitions["SPDLOG_FMT_EXTERNAL"] = False
         cmake.configure(source_dir=self._source_subfolder, build_dir='.')
         return cmake
 
