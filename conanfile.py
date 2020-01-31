@@ -6,7 +6,7 @@ class spdlogConan(ConanFile):
     name = "spdlog-graylog"
     libname = "spdlog"
     src_version = "1.5.0"
-    version = "1.5.0"
+    version = "1.5.0-dm1"
     homepage = "https://github.com/ess-dmsc/spdlog"
     license = "BSD 2-Clause"
     url = "https://github.com/ess-dmsc/conan-spdlog"
