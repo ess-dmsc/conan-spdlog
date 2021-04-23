@@ -3,7 +3,6 @@ import os
 
 
 class spdlogTestConan(ConanFile):
-    requires = ("spdlog-graylog/1.2.1-dm1@ess-dmsc/testing")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 

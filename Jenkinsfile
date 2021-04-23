@@ -2,10 +2,10 @@
 import ecdcpipeline.ContainerBuildNode
 import ecdcpipeline.ConanPackageBuilder
 
-conan_pkg_channel = "stable"
+conan_pkg_channel = "testing"
 
 container_build_nodes = [
-  'centos': ContainerBuildNode.getDefaultContainerBuildNode('centos7')
+  'centos': ContainerBuildNode.getDefaultContainerBuildNode('centos7-gcc8')
 ]
 
 package_builder = new ConanPackageBuilder(this, container_build_nodes, conan_pkg_channel)

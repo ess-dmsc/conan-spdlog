@@ -6,7 +6,7 @@ class spdlogConan(ConanFile):
     name = "spdlog-graylog"
     libname = "spdlog"
     src_version = "1.5.0"
-    version = "1.5.0-dm1"
+    version = "1.5.0-dm2"
     homepage = "https://github.com/ess-dmsc/spdlog"
     license = "BSD 2-Clause"
     url = "https://github.com/ess-dmsc/conan-spdlog"
@@ -17,7 +17,7 @@ class spdlogConan(ConanFile):
     generators = "cmake"
     _source_subfolder = "source_subfolder"
     exports_sources = ["CMakeLists.txt"]
-    requires = ("fmt/6.1.2", "graylog-logger/2.0.1-dm1@ess-dmsc/stable")
+    requires = ("fmt/6.1.2", "graylog-logger/2.0.3-dm1@ess-dmsc/stable")
     default_user = "ess-dmsc"
     default_channel = "stable"
 
